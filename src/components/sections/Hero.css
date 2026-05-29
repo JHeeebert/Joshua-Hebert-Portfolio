@@ -31,6 +31,13 @@
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .hero__layout {
+    grid-template-columns: 1fr 360px;
+    gap: var(--space-10);
+  }
+}
+
 @media (min-width: 960px) {
   .hero__layout {
     grid-template-columns: 1fr 420px;
@@ -83,8 +90,27 @@
 
 .hero__headline {
   color: var(--color-text-light);
-  margin-bottom: var(--space-8);
-  line-height: 1.08 !important;
+  margin-bottom: var(--space-5);
+  /* Confident, not oversized — overrides the larger display-1 sizing */
+  font-size: clamp(2.25rem, 5vw, 3.5rem) !important;
+  font-weight: var(--weight-bold) !important;
+  line-height: 1.1 !important;
+  max-width: 16ch;
+}
+
+/* Personal voice line — human, sits between headline and sub */
+.hero__voice {
+  color: var(--color-text-light);
+  font-size: clamp(var(--text-lg), 2vw, var(--text-xl));
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-6);
+  max-width: 540px;
+}
+
+.hero__voice em {
+  font-style: normal;
+  color: var(--color-teal-light);
 }
 
 .hero__headline-accent {
@@ -169,7 +195,7 @@
   display: none;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 768px) {
   .hero__visual {
     display: flex;
     align-items: center;
@@ -181,7 +207,7 @@
   width: 100%;
   max-width: 460px;
   height: auto;
-  opacity: 0.82;
+  opacity: 1;
 }
 
 /* Pulse animation on the center routing box border */

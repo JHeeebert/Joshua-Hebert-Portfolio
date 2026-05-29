@@ -47,8 +47,8 @@ function SignalFlowDiagram() {
           x1={s.x + 11} y1={s.y}
           x2={cx - 46}  y2={cy}
           stroke="#0D9488"
-          strokeWidth="1"
-          strokeOpacity="0.22"
+          strokeWidth="1.5"
+          strokeOpacity="0.5"
           strokeDasharray="5 8"
         />
       ))}
@@ -60,8 +60,8 @@ function SignalFlowDiagram() {
           x1={cx + 46}  y1={cy}
           x2={o.x - 14} y2={o.y}
           stroke="#14B8A6"
-          strokeWidth="1.5"
-          strokeOpacity="0.4"
+          strokeWidth="2"
+          strokeOpacity="0.7"
         />
       ))}
 
@@ -69,9 +69,9 @@ function SignalFlowDiagram() {
       {sources.map((s, i) => (
         <g key={`sn${i}`}>
           <circle cx={s.x} cy={s.y} r="7"
-            fill="#141920" stroke="#1E2733" strokeWidth="1.5" />
-          <circle cx={s.x} cy={s.y} r="2.5"
-            fill="#0D9488" fillOpacity="0.55" />
+            fill="#141920" stroke="#2E3D4D" strokeWidth="1.5" />
+          <circle cx={s.x} cy={s.y} r="3"
+            fill="#14B8A6" fillOpacity="1" />
           <text x={s.x + 15} y={s.y + 4}
             fill="#8896A8" fontSize="11"
             fontFamily="Inter, -apple-system, sans-serif" fontWeight="500">
@@ -163,10 +163,12 @@ export default function Hero() {
             </p>
 
             <h1 className="hero__headline display-1 animate-fade-up animate-fade-up--delay-2">
-              Turning fragmented<br />
-              <span className="hero__headline-accent">technical work</span><br />
-              into clear execution.
+              Turning fragmented <span className="hero__headline-accent">technical work</span> into clear execution.
             </h1>
+
+            <p className="hero__voice animate-fade-up animate-fade-up--delay-2">
+              I don't just manage delivery — I <em>build the systems</em> that make it clear.
+            </p>
 
             <p className="hero__sub body-lg animate-fade-up animate-fade-up--delay-3">
               I help product, engineering, and leadership teams move through ambiguity
