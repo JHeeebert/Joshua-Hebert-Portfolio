@@ -1,0 +1,61 @@
+/* ============================================================
+   ANIMATIONS
+   CSS fallback animations. Framer Motion handles the
+   primary scroll-reveal system in Phase 4.
+   ============================================================ */
+
+/* ── Entrance (used by Framer Motion as initial state) ─────── */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Hero text stagger ──────────────────────────────────────── */
+
+.animate-fade-up {
+  animation: fadeUp var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-fade-up--delay-1 { animation-delay: 100ms; }
+.animate-fade-up--delay-2 { animation-delay: 200ms; }
+.animate-fade-up--delay-3 { animation-delay: 350ms; }
+.animate-fade-up--delay-4 { animation-delay: 500ms; }
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

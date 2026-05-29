@@ -1,0 +1,46 @@
+.downloads__heading {
+  max-width: 480px;
+  margin-bottom: var(--space-16);
+}
+
+.downloads__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+/* ── Card ─────────────────────────────────────────────────────── */
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding: var(--space-10);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-border);
+  border-radius: var(--radius-xl);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.download-card:hover {
+  border-color: var(--color-teal);
+  box-shadow: var(--shadow-teal);
+}
+
+.download-card__title {
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-3);
+}
+
+.download-card__desc {
+  color: var(--color-text-muted-light);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.download-card__btn {
+  align-self: flex-start;
+}
