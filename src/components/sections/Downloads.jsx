@@ -6,7 +6,7 @@ import { fadeUp, fadeUpFast, staggerContainer } from '../../utils/motionVariants
 const DOWNLOADS = [
   {
     title: 'Resume',
-    description: 'Netflix-targeted TPM / Technical Delivery Manager resume. Covers cross-functional delivery, program leadership, and delivery systems experience.',
+    description: 'Senior TPM / Technical Delivery Manager resume. Covers cross-functional delivery, program leadership, and delivery systems experience.',
     file: '/assets/Joshua_Hebert_Resume.pdf',
     label: 'Download Resume',
   },
