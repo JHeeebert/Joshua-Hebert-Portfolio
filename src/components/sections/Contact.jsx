@@ -113,8 +113,9 @@ export default function Contact() {
               Let's talk delivery.
             </h2>
             <p className="contact__sub body-lg">
-              Open to senior Technical Delivery, TPM, Engineering Operations,
-              and Delivery Systems roles — remote or Charlotte, NC.
+              Always glad to connect with product, engineering, and delivery
+              leaders — and to talk delivery systems, program operations, and
+              AI-assisted workflows. Based in Charlotte, NC.
             </p>
 
             <div className="contact__links">
@@ -210,7 +211,7 @@ export default function Contact() {
                     id="contact-message"
                     name="message"
                     className={`form-input form-textarea ${errors.message ? 'form-input--error' : ''}`}
-                    placeholder="What are you working on? What kind of role or conversation are you looking for?"
+                    placeholder="What are you working on, or what would you like to talk about?"
                     value={fields.message}
                     onChange={handleChange}
                     onBlur={handleBlur}
