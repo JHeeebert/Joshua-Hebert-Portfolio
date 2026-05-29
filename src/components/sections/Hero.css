@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-16);
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 768px) {
@@ -90,12 +90,12 @@
 
 .hero__headline {
   color: var(--color-text-light);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   /* Confident, not oversized — overrides the larger display-1 sizing */
-  font-size: clamp(2.25rem, 5vw, 3.5rem) !important;
+  font-size: clamp(1.9rem, 3vw, 2.5rem) !important;
   font-weight: var(--weight-bold) !important;
-  line-height: 1.1 !important;
-  max-width: 16ch;
+  line-height: 1.14 !important;
+  max-width: 22ch;
 }
 
 /* Personal voice line — human, sits between headline and sub */
@@ -200,12 +200,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 46px;
   }
 }
 
 .hero__signal-svg {
   width: 100%;
-  max-width: 460px;
+  max-width: 560px;
   height: auto;
   opacity: 1;
 }
