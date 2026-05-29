@@ -14,7 +14,7 @@ const FORM_INIT = { name: '', email: '', message: '' }
    If left unconfigured, the form safely falls back to opening the
    visitor's email client instead of silently pretending to send.
 ─────────────────────────────────────────────────────────────────── */
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xojbylkq'
 const CONTACT_EMAIL      = 'jheeebertwd@gmail.com'
 
 function validate(fields) {
