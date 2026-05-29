@@ -18,21 +18,44 @@
 /* ── Card ─────────────────────────────────────────────────────── */
 
 .cs-card {
+  position: relative;
   background-color: var(--color-white);
   border: 1px solid var(--color-light-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
   transition:
     border-color var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out);
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
 }
 
-.cs-card:hover,
+/* Teal accent edge that grows in on hover/open */
+.cs-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-teal);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.cs-card:hover {
+  border-color: var(--color-teal);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.cs-card:hover::before,
+.cs-card--open::before {
+  transform: scaleY(1);
+}
+
 .cs-card--open {
   border-color: var(--color-teal);
-}
-
-.cs-card--open {
   box-shadow: var(--shadow-teal);
 }
 

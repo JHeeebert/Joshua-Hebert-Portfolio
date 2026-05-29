@@ -1,4 +1,30 @@
+import { useEffect, useRef, useState } from 'react'
+import { useInView } from 'framer-motion'
 import './Hero.css'
+
+/* ── Count-up number — animates 0 → value when scrolled into view ─ */
+function CountUp({ value, prefix = '', suffix = '', duration = 1200 }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const [n, setN] = useState(0)
+
+  useEffect(() => {
+    if (!inView) return
+    let start = null
+    let raf
+    const tick = (t) => {
+      if (start === null) start = t
+      const p = Math.min((t - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - p, 3)
+      setN(Math.round(eased * value))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, value, duration])
+
+  return <span ref={ref}>{prefix}{n}{suffix}</span>
+}
 
 /* ── Signal flow visualization ──────────────────────────────────
    Inline SVG: scattered inputs → routing engine → clear outputs.
@@ -213,19 +239,19 @@ export default function Hero() {
             {/* Proof band — real, verifiable signals of built work */}
             <dl className="hero__proof animate-fade-up animate-fade-up--delay-4" aria-label="Delivery systems built">
               <div className="hero__proof-item">
-                <dt className="hero__proof-num">42+</dt>
+                <dt className="hero__proof-num"><CountUp value={42} suffix="+" /></dt>
                 <dd className="hero__proof-label">delivery scripts on live Jira data</dd>
               </div>
               <div className="hero__proof-item">
-                <dt className="hero__proof-num">10+</dt>
+                <dt className="hero__proof-num"><CountUp value={10} suffix="+" /></dt>
                 <dd className="hero__proof-label">AI skills adopted by other teams</dd>
               </div>
               <div className="hero__proof-item">
-                <dt className="hero__proof-num">&lt;2 min</dt>
+                <dt className="hero__proof-num"><CountUp value={2} prefix="<" suffix=" min" /></dt>
                 <dd className="hero__proof-label">full sprint picture, one command</dd>
               </div>
               <div className="hero__proof-item">
-                <dt className="hero__proof-num">5</dt>
+                <dt className="hero__proof-num"><CountUp value={5} /></dt>
                 <dd className="hero__proof-label">delivery categories synthesized</dd>
               </div>
             </dl>
