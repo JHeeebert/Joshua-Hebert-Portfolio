@@ -32,10 +32,11 @@ export const caseStudies = [
     problem:
       'Sprint data in Jira tells a story, but assembling it requires manual effort across boards, reports, and contexts. Risk stays buried. Blockers compound. Planning gaps surface too late to course-correct.',
     approach:
-      'Built a 42+ script library that pulls live sprint data from Jira, analyzes it, and produces structured outputs across five delivery categories: sprint health, blockers and risk, backlog readiness, planning readiness, and dependency tracking. One command. Under 2 minutes. Full picture. Paired with a lightweight browser-accessible Delivery Home Base for delivery leads who need the outputs without terminal access — decoupled from the script layer so both can evolve independently. Includes a templates layer (story, epic, capability templates) built from real Jira tickets.',
+      'Built a 42+ script engine that pulls live program data, analyzes it, and produces decision-grade signals in under two minutes — effectively a delivery manager that runs on demand. One command surfaces sprint health, blockers and risk, risk and anomaly signals, refinement gaps across stories, epics and capabilities, and the decisions waiting on someone — then routes each signal to the audience that needs it. Paired with a lightweight browser-accessible home base for leads who need the outputs without terminal access, decoupled from the script layer so both can evolve independently.',
     shows:
-      'The ability to design and build delivery infrastructure — not just manage through it. Systems thinking made operational.',
-    stack: ['42+ scripts', 'Live Jira API', '5 output categories', 'Browser Delivery Home Base', 'Templates layer'],
+      'The ability to design and build delivery infrastructure — not just manage through it. This is what AI-into-working-systems looks like in practice: judgment encoded, admin drag removed, the full program picture available in minutes instead of a day of manual assembly.',
+    stack: ['42+ scripts', 'Live program data', '< 2 min full picture', 'Risk & anomaly signals', 'Audience routing'],
+    image: '/assets/case-signal-engine.png',
   },
   {
     label: 'AI-Assisted Delivery',
