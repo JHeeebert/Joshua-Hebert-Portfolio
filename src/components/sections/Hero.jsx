@@ -10,6 +10,13 @@ function CountUp({ value, prefix = '', suffix = '', duration = 1200 }) {
 
   useEffect(() => {
     if (!inView) return
+
+    // Respect reduced-motion: show the final value instantly, no animation.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setN(value)
+      return
+    }
+
     let start = null
     let raf
     const tick = (t) => {
