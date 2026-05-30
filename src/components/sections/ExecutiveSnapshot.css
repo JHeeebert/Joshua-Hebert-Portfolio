@@ -46,9 +46,15 @@
 }
 
 .snapshot-card__icon {
-  font-size: var(--text-2xl);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   line-height: 1;
+  color: var(--color-teal);
+}
+
+.snapshot-card__icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 .snapshot-card__title {

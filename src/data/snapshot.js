@@ -5,22 +5,22 @@
 
 export const snapshotCards = [
   {
-    icon: '⬡',
+    icon: 'network',
     title: 'Cross-team technical delivery',
     body: 'Driving execution visibility across UI, mobile, web, API, analytics, and platform workstreams — connecting planning, dependencies, and delivery checkpoints for product and engineering teams.',
   },
   {
-    icon: '◎',
+    icon: 'visibility',
     title: 'Execution visibility systems',
     body: 'Building operating systems that replace manual status collection with structured delivery intelligence — reducing coordination drag and improving predictability at scale.',
   },
   {
-    icon: '⬡',
+    icon: 'layers',
     title: 'Lightweight operating models',
     body: 'Designing Jira, Confluence, and Teams operating models that work in the flow of work — not around it. Initiative/capability/epic/story hierarchy, delivery rhythms, and stakeholder communication without process theater.',
   },
   {
-    icon: '◎',
+    icon: 'ai',
     title: 'AI-assisted workflow design',
     body: 'Building GenAI-powered delivery tools — sprint intelligence systems, working agreement health checks, planning workflows — that other delivery leads are now adopting. Accelerating judgment, not replacing it.',
   },
