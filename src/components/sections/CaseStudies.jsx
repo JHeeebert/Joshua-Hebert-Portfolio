@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import './CaseStudies.css'
 import { caseStudies } from '../../data/caseStudies'
 import { fadeUp, fadeUpFast, staggerContainer } from '../../utils/motionVariants'
 
-function CaseStudyCard({ number, label, title, problem, approach, shows, stack, image, isOpen, onToggle }) {
+function CaseStudyCard({ number, label, title, problem, approach, shows, stack, image, isOpen, onToggle, onExpand }) {
   if (!title) return null
 
   return (
@@ -52,7 +52,18 @@ function CaseStudyCard({ number, label, title, problem, approach, shows, stack, 
             )}
             {image && (
               <div className="cs-card__block">
-                <img className="cs-card__image" src={image} alt={`${title} — system artifact`} loading="lazy" />
+                <button
+                  type="button"
+                  className="cs-card__image-btn"
+                  onClick={() => onExpand(image, `${title} — system architecture`)}
+                  aria-label={`Enlarge diagram: ${title}`}
+                >
+                  <img className="cs-card__image" src={image} alt={`${title} — system architecture`} loading="lazy" />
+                  <span className="cs-card__image-hint" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                    Click to enlarge
+                  </span>
+                </button>
               </div>
             )}
             {Array.isArray(stack) && stack.length > 0 && (
@@ -71,6 +82,7 @@ function CaseStudyCard({ number, label, title, problem, approach, shows, stack, 
 
 export default function CaseStudies() {
   const [openIndex, setOpenIndex] = useState(null)
+  const [lightbox, setLightbox] = useState(null) // { src, alt } | null
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px 0px' })
   const studies = caseStudies ?? []
@@ -79,6 +91,22 @@ export default function CaseStudies() {
   const handleToggle = (i) => {
     setOpenIndex(prev => prev === i ? null : i)
   }
+
+  const openLightbox = (src, alt) => setLightbox({ src, alt })
+  const closeLightbox = () => setLightbox(null)
+
+  // Close on Escape; lock body scroll while open
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e) => { if (e.key === 'Escape') closeLightbox() }
+    window.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [lightbox])
 
   return (
     <section ref={ref} id="case-studies" className="case-studies section section--light" aria-label="Featured work">
@@ -109,12 +137,33 @@ export default function CaseStudies() {
                   {...study}
                   isOpen={openIndex === i}
                   onToggle={() => handleToggle(i)}
+                  onExpand={openLightbox}
                 />
               ))
             : null}
         </motion.div>
 
       </div>
+
+      {lightbox && (
+        <div
+          className="cs-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.alt}
+          onClick={closeLightbox}
+        >
+          <button className="cs-lightbox__close" onClick={closeLightbox} aria-label="Close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+          <img
+            className="cs-lightbox__img"
+            src={lightbox.src}
+            alt={lightbox.alt}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   )
 }
